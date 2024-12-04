@@ -1,5 +1,5 @@
 .task-progress {
-  width: 220px;
+  width: 200px;
   margin: auto;
   text-align: center;
 }
@@ -11,13 +11,19 @@
 }
 
 .green {
-  color: #2ecc71; /* Green for progress completion */
+  color: #2ecc71;
 }
 
 .yellow {
-  color: #f39c12; /* Orange for moderate progress */
+  color: #f39c12;
 }
 
 .red {
-  color: #e74c3c; /* Red for low progress */
+  color: #e74c3c;
+}
+
+@media (max-width: 700px) {
+  .task-progress {
+    width: 150px;
+  }
 }

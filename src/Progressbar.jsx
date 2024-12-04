@@ -5,7 +5,6 @@ import './Progressbar.css';
 const TaskProgress = ({ completed, total }) => {
   const percentage = total > 0 ? (completed / total) * 100 : 100;
 
-  // Determine color based on percentage
   const progressColor = percentage === 100 ? 'green' : percentage > 0 ? 'yellow' : 'red';
 
   return (

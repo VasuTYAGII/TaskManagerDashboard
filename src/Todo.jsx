@@ -4,6 +4,8 @@ import "./Todo.css";
 import Calender from "./Calender";
 import TaskProgress from "./Progressbar";
 import { motion } from 'framer-motion';
+import { Add, Done, Edit, Delete, Save , Cancel } from "@mui/icons-material";
+
 
 export default function Dashboard() {
   const [tasks, setTasks] = useState([
@@ -56,19 +58,22 @@ export default function Dashboard() {
   const filteredTasks = tasks.filter((task) => {
     if (filter === "completed") return task.done;
     if (filter === "pending") return !task.done;
-    return true; // "all" filter
+    return true;
   });
 
   const remainingTasksCount = tasks.filter(task => !task.done).length;
   const allTasksCount = tasks.length;
 
   return (
+
+    // Top Part
+
     <div className="dashboard-container">
       <div className="dashboard-header">
-      <span className="heading1">Task Manager</span>
+      <span className="heading1">Manage Tasks</span>
         <div className="main-data">
         <div className="srcBox">
-        <span className="heading2">Task Manager</span>
+        <span className="heading2">Manage Tasks</span>
           <input
             className="srcinput"
             type="text"
@@ -77,7 +82,7 @@ export default function Dashboard() {
             onChange={(e) => setNewTask(e.target.value)}
           />
           <button className="srcBtn" onClick={addTask} disabled={!newTask.trim()}>
-            Add Task
+          <span className="btnLogo"><Add/></span> <span className="btnName">Add Task</span>
           </button>
         </div>
         <div className="Calender">
@@ -85,10 +90,8 @@ export default function Dashboard() {
         </div>
         </div>
       </div>
-
          
          {/* Center Part */}
-
 
       <div className="dashboard-sidebar">
         <button
@@ -112,8 +115,6 @@ export default function Dashboard() {
           <span className={remainingTasksCount==0 ? "remaining-tasks-0" : "remaining-tasks"}>{remainingTasksCount} Tasks Pending</span>
       </div>
 
-
-
       {/* Main Part */}
 
       <div className="lowerarea">
@@ -128,14 +129,21 @@ export default function Dashboard() {
             className={`task-card ${task.done ? "completed" : ""}`}
           >
               {editTaskId === task.id ? (
-                <div className="edit-task">
-                  <input
+                <div className="edit-task">                  
+                  <div>
+                  <input className="editInput"
                     type="text"
                     value={editTaskValue}
                     onChange={(e) => setEditTaskValue(e.target.value)}
                   />
-                  <button className="saveEdit" onClick={() => saveEdit(task.id)}>Save</button>
-                  <button className="cancelEdit" onClick={cancelEdit}>Cancel</button>
+                  </div>
+                  <div>
+                  <button className="saveEdit" onClick={() => saveEdit(task.id)}>
+                  <span className="btnLogo"><Save /></span><span className="btnName">Save</span></button>
+                  <button className="cancelEdit" onClick={cancelEdit}>
+                    <span className="btnLogo"><Cancel/></span><span className="btnName">Cancel</span>
+                  </button>
+                  </div>
                 </div>
               ) : (
                 <>
@@ -143,15 +151,17 @@ export default function Dashboard() {
                   <div className="task-actions">
                   {!task.done && (
                      <button className="done" onClick={() => markAsDone(task.id)}>
-                     Mark as Done
+                     <span className="btnLogo"><Done /></span> <span className="btnName">Mark as Done</span>
                      </button>
                    )}
                    {task.done && <h3 className="complete">Completed</h3>}
                     <button className="edit" onClick={() => startEditing(task.id, task.title)}>
-                      Edit
+                    <span className="btnLogo"><Edit /></span> <span className="btnName">Edit</span>
                     </button>
-                    <button className="delete" onClick={() => deleteTask(task.id)}>Delete</button>
-                  </div>
+                    <button className="delete" onClick={() => deleteTask(task.id)}>
+                    <span className="btnLogo"><Delete /></span> <span className="btnName">Delete</span>
+                    </button>
+                  </div> 
                 </>
               )}
             </motion.li>

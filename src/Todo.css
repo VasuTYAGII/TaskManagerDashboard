@@ -1,12 +1,9 @@
 *{
   margin: 0;
 }
-
-/* Container and Layout */
-
 .dashboard-container {
   font-family:'Courier New', Courier, monospace !important;
-  background-color: #34495e; /* Darker background */
+  background-color: #34495e;
   display: flex;
   height: 100vh;
   width: 100vw;
@@ -14,11 +11,9 @@
   overflow: hidden  !important;
 }
 
-/* New Color Theme: #2980b9, #8e44ad, #ecf0f1 */
-
 .dashboard-header {
   padding-bottom: 5px;    
-  color: #ecf0f1; /* Light color for header */
+  color: #ecf0f1;
   display: flex;
   align-items: center;
   justify-content: space-evenly;
@@ -64,7 +59,7 @@
 
 .dashboard-header .srcBtn {
   border: none;
-  background-color: #2980b9; /* Light Blue */
+  background-color: #2980b9;
   color: white;
   cursor: pointer;
   border-radius: 5px;
@@ -77,11 +72,11 @@
 }
 
 .dashboard-header button:disabled {
-  background-color: #95a5a6; /* Light grey when disabled */
+  background-color: #95a5a6;
 }
 
 .dashboard-sidebar {
-  background-color: #2c3e50; /* Darker blue-grey */
+  background-color: #2c3e50;
   padding: 20px;
   color: white;
   display: flex;
@@ -92,7 +87,7 @@
   width: 300px;
   padding: 10px;
   margin:  0 10px;
-  background-color: #8e44ad; /* Purple */
+  background-color: #8e44ad;
   color: white;
   border: none;
   cursor: pointer;
@@ -100,13 +95,14 @@
 }
 
 .dashboard-sidebar button:hover {
-  background-color: #b700ff; /* Lighter purple */
+  background-color: #b700ff;
+  font-weight: bold;
 }
 
 .remaining-tasks {
   margin-top: 5px;
   margin-left: 20px;
-  background-color: #e74c3c; /* Red */
+  background-color: #e74c3c;
   font-size: 16px;
   font-weight: bold;
   text-align: center !important;
@@ -118,7 +114,7 @@
 .remaining-tasks-0{
   margin-top: 5px;
   margin-left: 20px;
-  background-color: #2ecc71; /* Red */
+  background-color: #2ecc71;
   font-size: 16px;
   font-weight: bold;
   text-align: center !important;
@@ -211,30 +207,68 @@
   display: inline;
   margin-right: 20px;
 }
+button{
+  display: inline-flex;
+  align-items: center;
+  justify-content: center;
+}
+
+.edit-task{
+  padding: 5px 10px;
+  border: none;
+  margin-left: 5px;
+  cursor: pointer;
+  border-radius: 5px;
+  font-weight: bold;
+  font-size: medium;
+  display: flex;
+  align-items: center;
+  width: auto !important;
+  justify-content: space-between !important;
+}
+
+.editInput{
+  border-radius: 20px;
+  height: 30px;
+  width: 220px;
+}
+.saveEdit , .cancelEdit{
+  padding: 5px 10px;
+  border: none;
+  margin-left: 5px;
+  cursor: pointer;
+  border-radius: 5px;
+  font-weight: bold;
+  font-size: medium;
+}
+.saveEdit{
+  background-color: #f39c12;
+  color: white;
+}
+.cancelEdit{
+  background-color: #e74c3c;
+  color: white;
+}
+button .btnLogo{
+  display: none;
+}
 
 /* scrollbar */
 
-/* Style the entire scrollbar */
 .dashboard-main::-webkit-scrollbar {
   width: 12px;
 }
-
-/* Style the track (background) of the scrollbar */
 .dashboard-main::-webkit-scrollbar-track {
   background-color: #f1f1f1;
   border-radius: 10px;
 }
-
-/* Style the handle (the part you drag) */
 .dashboard-main::-webkit-scrollbar-thumb {
-  background-color: #2980b9; /* Blue for the thumb */
+  background-color: #2980b9;
   border-radius: 10px;
   border: 3px solid #f1f1f1;
 }
-
-/* Style the scrollbar when hovered */
 .dashboard-main::-webkit-scrollbar-thumb:hover {
-  background-color: #3498db; /* Darker blue when hovered */
+  background-color: #3498db;
 }
 
 
@@ -285,6 +319,46 @@
     display: none;
   }
   .heading1{
-    display:inline;
+    display:block !important;
+  }
+  .btnLogo{
+    display: inline !important;
+  }
+  .btnName{
+    display: none !important;
+  }
+}
+
+@media (max-width: 650px) {
+  .Progressbar{
+    display: none !important;
+  }
+  .dashboard-main{
+    width: 100vw !important;
+  }
+}
+
+@media (max-width: 470px) {
+  .editInput{
+     width: 150px;
+  }
+  .task-actions .complete
+  {
+    display: none;
+  }
+  }
+
+@media (max-width: 390px) {
+  .dashboard-header .heading1{
+    font-size: 30px !important;
+  }
+  .editInput{
+    width: 100px;
+ }
+}
+
+@media (max-width: 350px) {
+  .task-actions .edit{
+    display: none !important;
   }
 }
